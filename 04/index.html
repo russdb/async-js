@@ -12,16 +12,16 @@
 (function () { 
   console.info('hello world')
 
-  const getTodos = function() {
+  const getTodos = function(callback) {
 
     const request = new XMLHttpRequest()
     console.info(request)
     request.addEventListener('readystatechange', () => {
       // console.info(request, request.readyState)
       if (request.readyState === 4 && request.status === 200) {
-        console.info(request,request.responseText)
+        callback(undefined, request.responseText)
       } else if (request.readyState === 4) {
-        console.info('could not fetch the data')
+        callback('could not fetch data', undefined)
       }
     })
 
@@ -29,7 +29,12 @@
     request.send()
   }
 
-  getTodos()
+  getTodos(function(err,data){
+    console.info('console fired')
+    console.info(err,data)
+    if (err) console.info(err) 
+    else console.info(data)
+  })
 
 })();
 
