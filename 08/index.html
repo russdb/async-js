@@ -10,7 +10,7 @@
 <script>
 
 (function () { 
-  console.info('hello world')
+  // console.info('hello world')
 
   
   const getTodos = function(resource, callback) {
@@ -35,7 +35,17 @@
 
   getTodos('todos/luigi.json').then(data => {
     console.info('promise resolved:', data)
-  }).catch((err) => { console.error('promise rejected', err)})
+    return getTodos('todos/mario.json')
+  })
+  .then(data=> { 
+    console.info('promise 2 resolved: ', data)
+    return getTodos('todos/toad.json')
+  })
+  .then(data=> { 
+    console.info('promise 3 resolved: ', data)
+  })
+  .catch((err) => { console.error('promise rejected', err) })
+
 
 })();
 
