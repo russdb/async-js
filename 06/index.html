@@ -12,7 +12,7 @@
 (function () { 
   console.info('hello world')
 
-  const getTodos = function(callback) {
+  const getTodos = function(resource, callback) {
 
     const request = new XMLHttpRequest()
     // console.info(request)
@@ -26,15 +26,19 @@
       }
     })
 
-    request.open('get', 'todos.json')
+    request.open('get', 'todos/luigi.json')
     request.send()
   }
 
-  getTodos(function(err,data){
+  getTodos('todos/luigi.json', function(err,data){
     console.info('callback fired')
-    // console.info(err,data)
-    if (err) console.info(err) 
-    else console.info(data)
+    console.info(data)
+    getTodos('todos/mario.json', function(err,data){
+      console.info(data)
+      getTodos('todos/toad.json', function(err,data){
+        console.info(data)
+      })
+    })
   })
 
 })();
