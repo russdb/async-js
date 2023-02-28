@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
+<script>
 
 (function () { 
   console.info('hello world')
@@ -31,7 +31,6 @@
   }
 
   getTodos('todos/luigi.json', function(err,data){
-    console.info('callback fired')
     console.info(data)
     getTodos('todos/mario.json', function(err,data){
       console.info(data)
@@ -43,6 +42,6 @@
 
 })();
 
-  </script>
+</script>
 </body>
 </html>
