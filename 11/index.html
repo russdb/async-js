@@ -14,13 +14,16 @@
   //async function always returns a promise
   const getTodos = async function() {
     const response = await fetch('todos/luigi.json')
+    if (response.status !== 200) {
+      throw new Error()
+    }
     const data = await response.json()
     return data
   }
 
   getTodos()
     .then(data => console.info(data))
-
+    .catch(err => console.error(err.message))
 })();
 
 </script>
