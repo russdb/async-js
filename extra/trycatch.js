@@ -8,7 +8,6 @@ function getData() {
 
 async function returnData() {
   try {
-    
     const result = await getData()
   } catch (error) {
     console.info(`Error: ${error}`)
